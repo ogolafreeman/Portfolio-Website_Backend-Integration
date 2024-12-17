@@ -6,6 +6,7 @@
 ?>
 <?php
     include 'home.php'; // home page
+    include 'about.php';
 ?>
 
 <?php
