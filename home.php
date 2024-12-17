@@ -1,3 +1,6 @@
+ <?php
+ include 'navbar.php'; // Includes navigation bar
+ ?>
  <!--
         ===================
            Home

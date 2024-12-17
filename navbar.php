@@ -16,13 +16,13 @@
                                     <a class="nav-link" href="about.php">About</a>
                                 </li>
                                 <li class="nav-item">
-                                   <a class="nav-link" href="service.php">Skills</a>
+                                   <a class="nav-link" href="skills.php">Skills</a>
                                 </li>                                
                                 <li class="nav-item">
-                                   <a class="nav-link" href="#mh-experience">Experiences</a>
+                                   <a class="nav-link" href="experience.php">Experiences</a>
                                 </li>                                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#mh-portfolio">Portfolio</a>
+                                    <a class="nav-link" href="portfolio.php">Portfolio</a>
                                 </li>                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="#mh-pricing">Pricing</a>
