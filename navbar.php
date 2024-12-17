@@ -10,13 +10,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#mh-home">Home</a>
+                                    <a class="nav-link" href="index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#mh-about">About</a>
+                                    <a class="nav-link" href="about.php">About</a>
                                 </li>
                                 <li class="nav-item">
-                                   <a class="nav-link" href="#mh-skills">Skills</a>
+                                   <a class="nav-link" href="service.php">Skills</a>
                                 </li>                                
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-experience">Experiences</a>
