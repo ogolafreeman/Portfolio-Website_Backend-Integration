@@ -1,5 +1,7 @@
 <?php
-session_start(); // Always start the session at the top of your page
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
