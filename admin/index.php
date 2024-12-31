@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Users</h5>
                             <p class="card-text">Manage all registered users.</p>
-                            <a href="pages/users.php" class="btn btn-primary">Go to Users</a>
+                            <a href="users.php" class="btn btn-primary">Go to Users</a>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Settings</h5>
                             <p class="card-text">Adjust application settings.</p>
-                            <a href="pages/settings.php" class="btn btn-primary">Go to Settings</a>
+                            <a href="settings.php" class="btn btn-primary">Go to Settings</a>
                         </div>
                     </div>
                 </div>

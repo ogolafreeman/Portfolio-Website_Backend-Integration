@@ -1,6 +1,12 @@
 <?php include('header.php'); ?>
-<div class="container mt-4">
-    <h2>Users</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <?php include('sidebar.php'); ?>
+        </div>
+        <div class="col-9 p-4">
+            <h1>Users</h1>
+            <div class="row">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,5 +28,8 @@
             </tr>
         </tbody>
     </table>
+            </div>
+        </div>
+    </div>
 </div>
 <?php include('footer.php'); ?>
