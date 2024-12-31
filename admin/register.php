@@ -52,7 +52,7 @@ $conn->close();
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Register</button>
-            <p class="text-center mt-3">Already have an account? <a href="login.php">Login</a></p>
+            <p class="text-center mt-3">Already have an account? <a href="index.php">Login</a></p>
         </form>
     </div>
 </body>
