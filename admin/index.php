@@ -1,36 +1,37 @@
 <?php
-// Start session to manage user login state
 session_start();
+include('config.php'); // Database connection
 
-// Database connection
-$conn = new mysqli("localhost", "root", "", "folio");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Encrypt input password using MD5
+    $password = $_POST['password']; // Password entered by user
 
-    // Query to check if user exists
-    $stmt = $conn->prepare("SELECT id, name FROM user WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    // Prepare and execute query to fetch user data
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->bind_result($id, $name);
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-    if ($stmt->fetch()) {
-        // Login successful, set session variables
-        $_SESSION['user_id'] = $id;
-        $_SESSION['user_name'] = $name;
-
-        // Redirect to dashboard.php
-        header("Location: dashboard.php");
-        exit;
+        // Verify password using password_verify (against hashed password in DB)
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, set session variables
+            $_SESSION['logged_in'] = true;
+            $_SESSION['username'] = $user['username'];  // Store username from the DB
+            $_SESSION['user_id'] = $user['id'];  // Store the user's ID
+            
+            // Redirect to the dashboard
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            // Invalid password
+            $error_message = "Invalid username or password";
+        }
     } else {
-        // Invalid credentials
-        $error_message = "Invalid username or password!";
+        // Invalid username
+        $error_message = "Invalid username or password";
     }
 
     $stmt->close();

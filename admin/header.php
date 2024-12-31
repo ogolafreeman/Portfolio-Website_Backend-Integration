@@ -1,13 +1,5 @@
 <?php
-// Start session
-session_start();
-
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    // Redirect to login page if not logged in
-    header("Location: index.php");
-    exit;
-}
+session_start(); // Always start the session at the top of your page
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,14 +20,17 @@ if (!isset($_SESSION['user_id'])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?>!</a>
+                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) { ?>
+                        <a class="nav-link" href="profile.php">Welcome, <?= htmlspecialchars($_SESSION['username']); ?></a>
+                    <?php } else { ?>
+                        <a class="nav-link" href="index.php">Login</a>
+                    <?php } ?>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Logout</a>
-                </li>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

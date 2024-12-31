@@ -5,7 +5,7 @@ include('header.php');
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login page if not logged in
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 // Query to fetch user data
-$sql = "SELECT id, name, username, username FROM user";
+$sql = "SELECT id, name, username, username, email FROM user";
 $result = $conn->query($sql);
 ?>
 
@@ -35,6 +35,7 @@ $result = $conn->query($sql);
                             <th>#</th>
                             <th>Name</th>
                             <th>User Name</th>
+                            <th>Email</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@ $result = $conn->query($sql);
                                 echo "<td>" . htmlspecialchars($row['id']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['username']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                                 echo "<td>";
                                 echo "<a href='edit_user.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a>";
                                 echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-sm btn-danger'>Delete</a>";

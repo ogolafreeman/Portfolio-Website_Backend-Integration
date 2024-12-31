@@ -10,13 +10,15 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Encrypt password using MD5
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Secure password hash
 
-    $stmt = $conn->prepare("INSERT INTO user (name, username, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $username, $password);
+    // Prepare and bind statement
+    $stmt = $conn->prepare("INSERT INTO user (name, username, email, password) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $username, $email, $password); // Now using 'ssss' for all string fields
 
     if ($stmt->execute()) {
-        echo "<script>alert('Registration successful!'); window.location.href='index.php';</script>";
+        echo "<script>alert('Registration successful!'); window.location.href='dashboard.php';</script>";
     } else {
         echo "<script>alert('Registration failed: " . $stmt->error . "');</script>";
     }
@@ -40,12 +42,16 @@ $conn->close();
         <h2 class="text-center">Register</h2>
         <form method="POST" action="register.php">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">Full Names</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label> <!-- Fixed label id -->
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
