@@ -5,38 +5,38 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="index.php" class="nav-link active" aria-current="page">
+            <a href="dashboard.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'dashboard.php' ? 'active' : 'link-dark'; ?>" aria-current="page">
                 Dashboard
             </a>
         </li>
         <li>
-            <a href="users.php" class="nav-link link-dark">
+            <a href="skills.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'skills.php' ? 'active' : 'link-dark'; ?>">
                 Skills
             </a>
         </li>
         <li>
-            <a href="users.php" class="nav-link link-dark">
+            <a href="projects.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'projects.php' ? 'active' : 'link-dark'; ?>">
                 Projects
             </a>
         </li>
         <li>
-            <a href="users.php" class="nav-link link-dark">
-                Experince
+            <a href="experience.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'experience.php' ? 'active' : 'link-dark'; ?>">
+                Experience
             </a>
         </li>
         <li>
-            <a href="users.php" class="nav-link link-dark">
+            <a href="users.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'users.php' ? 'active' : 'link-dark'; ?>">
                 Users
             </a>
         </li>
         <li>
-            <a href="settings.php" class="nav-link link-dark">
+            <a href="settings.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'settings.php' ? 'active' : 'link-dark'; ?>">
                 Settings
             </a>
         </li>
     </ul>
     <hr>
     <div>
-        <a href="#" class="btn btn-primary btn-sm">Logout</a>
+        <a href="logout.php" class="btn btn-primary btn-sm">Logout</a>
     </div>
 </div>
