@@ -1,18 +1,6 @@
 <?php
     include 'header.php'; // Includes meta tags and stylesheets
-
-    // Database connection
-    $servername = "localhost";
-    $username = "root"; // Replace with your username
-    $password = ""; // Replace with your password
-    $dbname = "folio"; // Database name
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include('config.php'); 
 
     // Fetch education details
     $educationQuery = "SELECT * FROM education";

@@ -2,17 +2,7 @@
 include 'navbar.php'; // Includes navigation bar
 
 // Database connection
-$servername = "localhost";
-$username = "root"; // Replace with your username
-$password = ""; // Replace with your password
-$dbname = "folio"; // Database name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('config.php'); 
 
 // Fetch data from `home_section` table
 $sql = "SELECT * FROM home_section WHERE id = 1"; // Adjust ID as needed

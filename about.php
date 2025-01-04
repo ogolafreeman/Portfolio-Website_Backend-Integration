@@ -1,21 +1,7 @@
 <?php
     // Main index file
     include 'header.php'; // Includes meta tags and stylesheets
-
-    // Database connection
-    $servername = "localhost";
-    $username = "root"; // Replace with your database username if different
-    $password = ""; // Replace with your database password if set
-    $dbname = "folio"; // Updated database name
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    include('config.php'); 
     // Fetch "About Me" data
     $sql = "SELECT * FROM about_me WHERE id = 1"; // Adjust ID as needed
     $result = $conn->query($sql);
