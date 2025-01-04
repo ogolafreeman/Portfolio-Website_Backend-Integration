@@ -48,7 +48,6 @@
         $insertProfSkillQuery->close();
     }
 
-    $conn->close();
 ?>
 
 <div class="container mt-5">
@@ -101,11 +100,11 @@
             <tr>
                 <th>Skill Name</th>
                 <th>Proficiency (%)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $conn = new mysqli($servername, $username, $password, $dbname);
             $techSkillsQuery = "SELECT * FROM technical_skills";
             $techSkillsResult = $conn->query($techSkillsQuery);
 
@@ -113,6 +112,10 @@
                 echo "<tr>
                         <td>{$row['skill_name']}</td>
                         <td>{$row['proficiency']}%</td>
+                        <td>
+                            <a href='edit_skill.php?type=technical&id={$row['id']}' class='btn btn-sm btn-warning'>Edit</a>
+                            <a href='delete_skill.php?type=technical&id={$row['id']}' class='btn btn-sm btn-danger' onclick=\"return confirm('Are you sure you want to delete this skill?');\">Delete</a>
+                        </td>
                       </tr>";
             }
             ?>
@@ -126,6 +129,7 @@
             <tr>
                 <th>Skill Name</th>
                 <th>Proficiency (%)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -137,10 +141,12 @@
                 echo "<tr>
                         <td>{$row['skill_name']}</td>
                         <td>{$row['proficiency']}%</td>
+                        <td>
+                            <a href='edit_skill.php?type=professional&id={$row['id']}' class='btn btn-sm btn-warning'>Edit</a>
+                            <a href='delete_skill.php?type=professional&id={$row['id']}' class='btn btn-sm btn-danger' onclick=\"return confirm('Are you sure you want to delete this skill?');\">Delete</a>
+                        </td>
                       </tr>";
             }
-
-            $conn->close();
             ?>
         </tbody>
     </table>
@@ -148,5 +154,8 @@
 
 </div>
 
-
+<?php
+// Close connection after all queries and operations
+$conn->close();
+?>
 <?php include('footer.php'); ?>
