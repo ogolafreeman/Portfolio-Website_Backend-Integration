@@ -112,40 +112,10 @@
             </div>
 </br>
             <button type="submit" name="add_project" class="btn btn-primary">Add Project</button>
+            <button href="projectlist.php" name="projectlist" class="btn btn-primary">View Project</button>
+        </form> 
         </form>
     </div>
 </div>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Image</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $projectsQuery = "SELECT * FROM projects";
-        $projectsResult = $conn->query($projectsQuery);
-
-        while ($row = $projectsResult->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$row['category']}</td>
-                    <td>{$row['title']}</td>
-                    <td>{$row['type']}</td>
-                    <td>{$row['description']}</td>
-                    <td><img src='{$row['image']}' alt='Project Image' style='width:100px;'></td>
-                    <td>
-                        <a href='edit_project.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
-                        <a href='delete_project.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Are you sure you want to delete this project?');\">Delete</a>
-                    </td>
-                  </tr>";
-        }
-        ?>
-    </tbody>
-</table>
 
 </div>
