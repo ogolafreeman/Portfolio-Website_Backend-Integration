@@ -1,107 +1,137 @@
-   <!--
-        ===================
-           FOOTER 3
-        ===================
-        -->
-        <footer class="mh-footer mh-footer-3">
-            <div class="container-fluid">
-                <div class="row section-separator">
-                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h3>Contact Me</h3>
-                    </div>
-                    <div class="map-image image-bg col-sm-12">
-                        <div class="container mt-30">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 mh-footer-address">
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item dark-bg shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-location-arrow"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Address</h4>
-                                                <address>
-                                                    5th Avenue, 34th floor, <br> 
-                                                     New york
-                                                </address>
-                                            </div>
-                                        </div>
+<?php
+    include 'header.php'; // Includes meta tags and stylesheets
+
+    // Database connection
+    $servername = "localhost";
+    $username = "root"; // Replace with your username
+    $password = ""; // Replace with your password
+    $dbname = "folio"; // Database name
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch contact information
+    $contactInfoQuery = "SELECT * FROM contact_info LIMIT 1";
+    $contactInfoResult = $conn->query($contactInfoQuery);
+    $contactInfo = $contactInfoResult->fetch_assoc();
+
+    // Fetch social media links
+    $socialLinksQuery = "SELECT * FROM social_links";
+    $socialLinksResult = $conn->query($socialLinksQuery);
+
+    // Handle contact form submission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $firstName = htmlspecialchars($_POST['first_name']);
+        $lastName = htmlspecialchars($_POST['last_name']);
+        $email = htmlspecialchars($_POST['email']);
+        $message = htmlspecialchars($_POST['message']);
+
+        $insertMessageQuery = $conn->prepare("INSERT INTO contact_messages (first_name, last_name, email, message) VALUES (?, ?, ?, ?)");
+        $insertMessageQuery->bind_param("ssss", $firstName, $lastName, $email, $message);
+
+        if ($insertMessageQuery->execute()) {
+            echo "<script>alert('Your message has been sent successfully!');</script>";
+        } else {
+            echo "<script>alert('There was an error sending your message. Please try again.');</script>";
+        }
+
+        $insertMessageQuery->close();
+    }
+
+    $conn->close();
+?>
+<footer class="mh-footer mh-footer-3">
+    <div class="container-fluid">
+        <div class="row section-separator">
+            <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                <h3>Contact Me</h3>
+            </div>
+            <div class="map-image image-bg col-sm-12">
+                <div class="container mt-30">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 mh-footer-address">
+                            <!-- Dynamic Address -->
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item dark-bg shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-location-arrow"></i>
                                     </div>
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Email</h4>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a><br>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Phone</h4>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a><br>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>
-                                            </div>
-                                        </div>
+                                    <div class="each-info media-body">
+                                        <h4>Address</h4>
+                                        <address>
+                                            <?php echo $contactInfo['address']; ?>
+                                        </address>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
-                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
-                                            </div>
-                
-                                            <div class="col-sm-12">
-                                                <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
-                                            </div>
-                
-                                            <div class="col-sm-12">
-                                                <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
-                                            </div>
-                
-                                            <div class="col-sm-12">
-                                                <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
-                                            </div>
-                                            
-                                            <!-- Subject Button -->
-                                            <div class="btn-form col-sm-12">
-                                                <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                            </div>
+                            <!-- Dynamic Email -->
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </div>
+                                    <div class="each-info media-body">
+                                        <h4>Email</h4>
+                                        <a href="mailto:<?php echo $contactInfo['email']; ?>"><?php echo $contactInfo['email']; ?></a>
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="text-left text-xs-center">
-                                                <p><a href="templateshub.net">Templates Hub</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul class="social-icon">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
-                                        </div>
+                            </div>
+                            <!-- Dynamic Phone -->
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="each-info media-body">
+                                        <h4>Phone</h4>
+                                        <a href="callto:<?php echo $contactInfo['phone']; ?>"><?php echo $contactInfo['phone']; ?></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Contact Form -->
+                        <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                            <form method="POST" id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <input name="first_name" class="contact-name form-control" type="text" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="last_name" class="contact-email form-control" type="text" placeholder="Last Name" required>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="email" class="contact-subject form-control" type="email" placeholder="Your Email" required>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <textarea name="message" class="contact-message form-control" rows="6" placeholder="Your Message" required></textarea>
+                                    </div>
+                                    <div class="btn-form col-sm-12">
+                                        <button type="submit" class="btn btn-fill btn-block">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Social Media Links -->
+                        <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                            <ul class="social-icon">
+                                <?php while ($social = $socialLinksResult->fetch_assoc()): ?>
+                                    <li><a href="<?php echo $social['link']; ?>"><i class="<?php echo $social['icon_class']; ?>"></i></a></li>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </div>
+</footer>
+
   <!--
     ==============
     * JS Files *
