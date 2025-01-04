@@ -1,54 +1,51 @@
 <?php
-    // Main index file
     include 'header.php'; // Includes meta tags and stylesheets
- //   include 'navbar.php'; // Includes navigation bar
-    //include 'loader.php'; // Includes the page loader
+
+    // Database connection
+    $servername = "localhost";
+    $username = "root"; // Replace with your username
+    $password = ""; // Replace with your password
+    $dbname = "folio"; // Database name
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch services data
+    $servicesQuery = "SELECT * FROM services";
+    $servicesResult = $conn->query($servicesQuery);
 ?>
-<!--
-        ===================
-           SERVICE
-        ===================
-        -->
-        <section class="mh-service">
-            <div class="container">
-                <div class="row section-separator">
-                    <div class="col-sm-12 text-center section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h2>What I do</h2>
-                    </div>
+
+<!-- ===================
+        SERVICES
+=================== -->
+<section class="mh-service">
+    <div class="container">
+        <div class="row section-separator">
+            <div class="col-sm-12 text-center section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                <h2>What I do</h2>
+            </div>
+
+            <?php if ($servicesResult->num_rows > 0): ?>
+                <?php while ($service = $servicesResult->fetch_assoc()): ?>
                     <div class="col-sm-4">
                         <div class="mh-service-item shadow-1 dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                            <i class="fa fa-bullseye purple-color"></i>
-                            <h3>UI Design</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat.
-                            </p>
+                            <i class="<?php echo $service['icon']; ?>"></i>
+                            <h3><?php echo $service['title']; ?></h3>
+                            <p><?php echo $service['description']; ?></p>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="mh-service-item shadow-1 dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                            <i class="fa fa-code iron-color"></i>
-                            <h3>Web Development</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="mh-service-item shadow-1 dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                            <i class="fa fa-object-ungroup sky-color"></i>
-                            <h3>App Development</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p class="text-center">No services available at the moment.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<?php
+    $conn->close();
+?>
