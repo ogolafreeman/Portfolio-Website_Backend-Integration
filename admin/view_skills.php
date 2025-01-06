@@ -3,51 +3,7 @@
     
 
     // Database connection
-    $servername = "localhost";
-    $username = "root"; // Replace with your username
-    $password = ""; // Replace with your password
-    $dbname = "folio"; // Database name
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Handle Technical Skills Submission
-    if (isset($_POST['add_technical_skill'])) {
-        $techSkillName = htmlspecialchars($_POST['technical_skill_name']);
-        $techSkillProficiency = htmlspecialchars($_POST['technical_skill_proficiency']);
-
-        $insertTechSkillQuery = $conn->prepare("INSERT INTO technical_skills (skill_name, proficiency) VALUES (?, ?)");
-        $insertTechSkillQuery->bind_param("si", $techSkillName, $techSkillProficiency);
-
-        if ($insertTechSkillQuery->execute()) {
-            echo "<script>alert('Technical Skill added successfully!');</script>";
-        } else {
-            echo "<script>alert('Error adding Technical Skill.');</script>";
-        }
-
-        $insertTechSkillQuery->close();
-    }
-
-    // Handle Professional Skills Submission
-    if (isset($_POST['add_professional_skill'])) {
-        $profSkillName = htmlspecialchars($_POST['professional_skill_name']);
-        $profSkillProficiency = htmlspecialchars($_POST['professional_skill_proficiency']);
-
-        $insertProfSkillQuery = $conn->prepare("INSERT INTO professional_skills (skill_name, proficiency) VALUES (?, ?)");
-        $insertProfSkillQuery->bind_param("si", $profSkillName, $profSkillProficiency);
-
-        if ($insertProfSkillQuery->execute()) {
-            echo "<script>alert('Professional Skill added successfully!');</script>";
-        } else {
-            echo "<script>alert('Error adding Professional Skill.');</script>";
-        }
-
-        $insertProfSkillQuery->close();
-    }
+    include 'config.php';
 
 ?>
 <div class="container-fluid">
