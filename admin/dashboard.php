@@ -1,9 +1,9 @@
 <?php include('header.php'); ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
+        
             <?php include('sidebar.php'); ?>
-        </div>
+       
         <div class="col-9 p-4">
             <h1>Welcome to the Admin Dashboard</h1>
             <div class="row">

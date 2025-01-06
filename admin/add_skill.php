@@ -42,9 +42,7 @@
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
             <?php include('sidebar.php'); ?>
-        </div>
         <div class="col-9 p-4">
         <h2>Manage Skills</h2>
 </br>
