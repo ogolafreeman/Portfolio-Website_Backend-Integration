@@ -79,7 +79,6 @@
 
     $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,46 +86,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Project</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background for a modern look */
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            font-weight: 600;
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #4CAF50; /* Green button */
+            border-color: #4CAF50;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #333;
+        }
+        small.text-muted {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Edit Project</h2>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="project_category">Project Category</label>
-                <input type="text" name="project_category" class="form-control" id="project_category" value="<?php echo $project['category']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="project_title">Project Title</label>
-                <input type="text" name="project_title" class="form-control" id="project_title" value="<?php echo $project['title']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="project_type">Project Type</label>
-                <input type="text" name="project_type" class="form-control" id="project_type" value="<?php echo $project['type']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="project_description">Project Description</label>
-                <textarea name="project_description" class="form-control" id="project_description" rows="4" required><?php echo $project['description']; ?></textarea>
-            </div>
-            <div class="form-group">
-                <label for="project_image">Project Image</label>
-                <input type="file" name="project_image" class="form-control" id="project_image" accept="image/*">
-                <small class="text-muted">Current Image: <?php echo basename($project['image']); ?></small>
-            </div>
-            <div class="form-group">
-                <label for="project_testimonial">Testimonial</label>
-                <textarea name="project_testimonial" class="form-control" id="project_testimonial" rows="3"><?php echo $project['testimonial']; ?></textarea>
-            </div>
-            <div class="form-group">
-                <label for="testimonial_author">Testimonial Author</label>
-                <input type="text" name="testimonial_author" class="form-control" id="testimonial_author" value="<?php echo $project['testimonial_author']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="testimonial_cite">Testimonial Cite</label>
-                <input type="text" name="testimonial_cite" class="form-control" id="testimonial_cite" value="<?php echo $project['testimonial_cite']; ?>">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Update Project</button>
-        </form>
+        <div class="form-container mx-auto" style="max-width: 800px;">
+            <h2 class="mb-4">Edit Project</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Project Category -->
+                <div class="mb-3">
+                    <label for="project_category" class="form-label">Project Category</label>
+                    <input type="text" name="project_category" class="form-control" id="project_category" value="<?php echo htmlspecialchars($project['category']); ?>" required>
+                </div>
+
+                <!-- Project Title -->
+                <div class="mb-3">
+                    <label for="project_title" class="form-label">Project Title</label>
+                    <input type="text" name="project_title" class="form-control" id="project_title" value="<?php echo htmlspecialchars($project['title']); ?>" required>
+                </div>
+
+                <!-- Project Type -->
+                <div class="mb-3">
+                    <label for="project_type" class="form-label">Project Type</label>
+                    <input type="text" name="project_type" class="form-control" id="project_type" value="<?php echo htmlspecialchars($project['type']); ?>" required>
+                </div>
+
+                <!-- Project Description -->
+                <div class="mb-3">
+                    <label for="project_description" class="form-label">Project Description</label>
+                    <textarea name="project_description" class="form-control" id="project_description" rows="4" required><?php echo htmlspecialchars($project['description']); ?></textarea>
+                </div>
+
+                <!-- Project Image -->
+                <div class="mb-3">
+                    <label for="project_image" class="form-label">Project Image</label>
+                    <input type="file" name="project_image" class="form-control" id="project_image" accept="image/*">
+                    <small class="text-muted">Current Image: <?php echo htmlspecialchars(basename($project['image'])); ?></small>
+                </div>
+
+                <!-- Testimonial -->
+                <div class="mb-3">
+                    <label for="project_testimonial" class="form-label">Testimonial</label>
+                    <textarea name="project_testimonial" class="form-control" id="project_testimonial" rows="3"><?php echo htmlspecialchars($project['testimonial']); ?></textarea>
+                </div>
+
+                <!-- Testimonial Author -->
+                <div class="mb-3">
+                    <label for="testimonial_author" class="form-label">Testimonial Author</label>
+                    <input type="text" name="testimonial_author" class="form-control" id="testimonial_author" value="<?php echo htmlspecialchars($project['testimonial_author']); ?>">
+                </div>
+
+                <!-- Testimonial Cite -->
+                <div class="mb-3">
+                    <label for="testimonial_cite" class="form-label">Testimonial Cite</label>
+                    <input type="text" name="testimonial_cite" class="form-control" id="testimonial_cite" value="<?php echo htmlspecialchars($project['testimonial_cite']); ?>">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 py-2">Update Project</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

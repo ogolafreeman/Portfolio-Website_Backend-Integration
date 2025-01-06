@@ -66,3 +66,27 @@ body {
 hr.border-secondary {
     border-top: 1px solid #7f8c8d;
 }
+body {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
