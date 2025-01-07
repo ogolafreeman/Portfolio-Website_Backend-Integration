@@ -5,6 +5,7 @@
     </a>
     <hr class="border-secondary">
     <ul class="nav nav-pills flex-column mb-auto">
+        <!-- Dashboard -->
         <li class="nav-item">
             <a href="dashboard.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'dashboard.php' ? 'active' : ''; ?>">
                 <i class="fa fa-dashboard me-2"></i> Dashboard
@@ -37,15 +38,41 @@
             </div>
         </li>
 
+        <!-- Users Module -->
+        <li>
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#usersMenu" role="button" aria-expanded="false" aria-controls="usersMenu">
+                <i class="fa fa-users me-2"></i> Users
+            </a>
+            <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_user.php', 'view_users.php']) ? 'show' : ''); ?>" id="usersMenu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="add_user.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_user.php' ? 'active' : ''; ?>">Add User</a></li>
+                    <li><a href="view_users.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_users.php' ? 'active' : ''; ?>">View List</a></li>
+                </ul>
+            </div>
+        </li>
+
         <!-- About Me Module -->
         <li>
-            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#aboutMeMenu" role="button" aria-expanded="false" aria-controls="aboutMeMenu">
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#aboutMenu" role="button" aria-expanded="false" aria-controls="aboutMenu">
                 <i class="fa fa-user me-2"></i> About Me
             </a>
-            <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_about_me.php', 'view_about_me.php']) ? 'show' : ''); ?>" id="aboutMeMenu">
+            <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_about_me.php', 'view_about_me.php']) ? 'show' : ''); ?>" id="aboutMenu">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="add_about_me.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_about_me.php' ? 'active' : ''; ?>">Add About Me</a></li>
                     <li><a href="view_about_me.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_about_me.php' ? 'active' : ''; ?>">View About Me</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Pricing Module -->
+        <li>
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#pricingMenu" role="button" aria-expanded="false" aria-controls="pricingMenu">
+                <i class="fa fa-dollar-sign me-2"></i> Pricing
+            </a>
+            <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_pricing.php', 'view_pricing.php']) ? 'show' : ''); ?>" id="pricingMenu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="add_pricing.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_pricing.php' ? 'active' : ''; ?>">Add Pricing</a></li>
+                    <li><a href="view_pricing.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_pricing.php' ? 'active' : ''; ?>">View List</a></li>
                 </ul>
             </div>
         </li>
@@ -57,35 +84,15 @@
             </a>
             <div class="collapse <?= in_array(basename($_SERVER['PHP_SELF']), ['add_education.php', 'view_education.php', 'add_work.php', 'view_work.php']) ? 'show' : ''; ?>" id="experienceMenu">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <!-- Education Experience -->
-                    <li>
-                        <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#educationMenu" role="button" aria-expanded="false" aria-controls="educationMenu">
-                            Education Experience
-                        </a>
-                        <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_education.php', 'view_education.php']) ? 'show' : ''); ?>" id="educationMenu">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="add_education.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_education.php' ? 'active' : ''; ?>">Add Education</a></li>
-                                <li><a href="view_education.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_education.php' ? 'active' : ''; ?>">View Education</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- Work Experience -->
-                    <li>
-                        <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#workMenu" role="button" aria-expanded="false" aria-controls="workMenu">
-                            Work Experience
-                        </a>
-                        <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_work.php', 'view_work.php']) ? 'show' : ''); ?>" id="workMenu">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="add_work.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_work.php' ? 'active' : ''; ?>">Add Work</a></li>
-                                <li><a href="view_work.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_work.php' ? 'active' : ''; ?>">View Work</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li><a href="add_education.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_education.php' ? 'active' : ''; ?>">Add Education</a></li>
+                    <li><a href="view_education.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_education.php' ? 'active' : ''; ?>">View Education</a></li>
+                    <li><a href="add_work.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_work.php' ? 'active' : ''; ?>">Add Work</a></li>
+                    <li><a href="view_work.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_work.php' ? 'active' : ''; ?>">View Work</a></li>
                 </ul>
             </div>
         </li>
 
-        <!-- Settings Module -->
+        <!-- Settings -->
         <li>
             <a href="settings.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'settings.php' ? 'active' : ''; ?>">
                 <i class="fa fa-gear me-2"></i> Settings
