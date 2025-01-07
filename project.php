@@ -1,12 +1,12 @@
 <?php
-    include 'header.php'; // Includes meta tags and stylesheets
+include 'header.php'; // Includes meta tags and stylesheets
 
-    // Database connection
-    include('config.php'); 
+// Database connection
+include('config.php');
 
-    // Fetch projects data
-    $projectsQuery = "SELECT * FROM projects";
-    $projectsResult = $conn->query($projectsQuery);
+// Fetch projects data
+$projectsQuery = "SELECT * FROM projects";
+$projectsResult = $conn->query($projectsQuery);
 ?>
 
 <section class="mh-featured-project image-bg featured-img-one">
@@ -19,30 +19,24 @@
 
                 <?php if ($projectsResult->num_rows > 0): ?>
                     <?php while ($project = $projectsResult->fetch_assoc()): ?>
-                        <div class="col-sm-12 mh-featured-item">
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="mh-featured-project-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                        <img src="<?php echo $project['image']; ?>" alt="Project Image" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="col-sm-5">
-                                    <div class="mh-featured-project-content">
-                                        <h4 class="project-category wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"><?php echo $project['category']; ?></h4>
-                                        <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"><?php echo $project['title']; ?></h2>
-                                        <span class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"><?php echo $project['type']; ?></span>
-                                        <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s"><?php echo $project['description']; ?></p>
-                                        <a href="#" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">View Details</a>
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="card shadow bg-dark text-white">
+                                <img src="admin/<?php echo htmlspecialchars($project['image']); ?>" alt="Project Image" class="card-img-top img-fluid" style="height: 300px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo htmlspecialchars($project['title']); ?></h5>
+                                    <p class="card-text"><?php echo htmlspecialchars($project['description']); ?></p>
+                                    <p><strong>Category:</strong> <?php echo htmlspecialchars($project['category']); ?></p>
+                                    <p><strong>Type:</strong> <?php echo htmlspecialchars($project['type']); ?></p>
+                                    <a href="#" class="btn btn-primary">View Details</a>
 
-                                        <?php if ($project['testimonial']): ?>
-                                            <div class="mh-testimonial mh-project-testimonial wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.9s">
-                                                <blockquote>
-                                                    <q><?php echo $project['testimonial']; ?></q>
-                                                    <cite>- <?php echo $project['testimonial_author']; ?>, <?php echo $project['testimonial_cite']; ?></cite>
-                                                </blockquote>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
+                                    <?php if (!empty($project['testimonial'])): ?>
+                                        <div class="mt-3">
+                                            <blockquote class="blockquote">
+                                                <p class="mb-0"><?php echo htmlspecialchars($project['testimonial']); ?></p>
+                                                <footer class="blockquote-footer text-white-50"><?php echo htmlspecialchars($project['testimonial_author']); ?>, <cite><?php echo htmlspecialchars($project['testimonial_cite']); ?></cite></footer>
+                                            </blockquote>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -56,5 +50,5 @@
 </section>
 
 <?php
-    $conn->close();
+$conn->close();
 ?>
