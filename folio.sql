@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2025 at 02:53 PM
+-- Generation Time: Jan 07, 2025 at 01:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -55,17 +55,16 @@ CREATE TABLE `blog_posts` (
   `post_date` date NOT NULL,
   `author` varchar(100) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `read_more_link` varchar(255) NOT NULL
+  `read_more_link` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blog_posts`
 --
 
-INSERT INTO `blog_posts` (`id`, `title`, `content`, `post_date`, `author`, `image`, `read_more_link`) VALUES
-(1, 'A life without the daily traffic jams', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '2019-11-24', 'ThemeSpiders', 'assets/images/b-3.png', 'blog-single.html'),
-(2, 'Proportion are what’s really needed', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '2019-11-24', 'ThemeSpiders', 'assets/images/b-2.png', 'blog-single.html'),
-(3, 'A life without the daily traffic jams', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '2019-11-24', 'ThemeSpiders', 'assets/images/b-3.png', 'blog-single.html');
+INSERT INTO `blog_posts` (`id`, `title`, `content`, `post_date`, `author`, `image`, `read_more_link`, `created_at`) VALUES
+(4, 'Test', 'test', '0000-00-00', 'test', 'uploads/blogs/logo.png', '', '2025-01-07 12:40:02');
 
 -- --------------------------------------------------------
 
@@ -179,7 +178,8 @@ CREATE TABLE `pricing` (
 INSERT INTO `pricing` (`id`, `type`, `description`, `price`, `icon`, `features`) VALUES
 (1, 'Full-time work', 'I am available for full time', 1500.00, 'fa fa-calendar', 'Web Development,Advertising,Game Development,Music Writing'),
 (2, 'Fixed Price Project', 'I am available for fixed roles', 500.00, 'fa fa-file', 'Web Development,Advertising,Game Development,Music Writing'),
-(3, 'Hourly work', 'I am available for Hourly projects', 50.00, 'fa fa-hourglass', 'Web Development,Advertising,Game Development,Music Writing');
+(3, 'Hourly work', 'I am available for Hourly projects', 50.00, 'fa fa-hourglass', 'Web Development,Advertising,Game Development,Music Writing'),
+(4, 'General', 'All', 2000.00, 'fa-fa facebook', 'yes');
 
 -- --------------------------------------------------------
 
@@ -476,7 +476,7 @@ ALTER TABLE `about_me`
 -- AUTO_INCREMENT for table `blog_posts`
 --
 ALTER TABLE `blog_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact_info`
@@ -506,7 +506,7 @@ ALTER TABLE `home_section`
 -- AUTO_INCREMENT for table `pricing`
 --
 ALTER TABLE `pricing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `professional_skills`
