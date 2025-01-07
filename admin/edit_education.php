@@ -39,28 +39,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="row">
         <?php include('sidebar.php'); ?>
         <div class="col-9 p-4">
-            <h2>Edit Education</h2>
-            <form method="POST">
-                <div class="form-group mb-3">
-                    <label for="degree">Degree</label>
-                    <input type="text" name="degree" class="form-control" id="degree" value="<?= htmlspecialchars($education['degree']); ?>" required>
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Edit Education</h3>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="institution">Institution</label>
-                    <input type="text" name="institution" class="form-control" id="institution" value="<?= htmlspecialchars($education['institution']); ?>" required>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="degree" class="form-label">Degree</label>
+                            <input type="text" name="degree" class="form-control" id="degree" value="<?= htmlspecialchars($education['degree']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="institution" class="form-label">Institution</label>
+                            <input type="text" name="institution" class="form-control" id="institution" value="<?= htmlspecialchars($education['institution']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="duration" class="form-label">Duration</label>
+                            <input type="text" name="duration" class="form-control" id="duration" value="<?= htmlspecialchars($education['duration']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" class="form-control" id="description" rows="4" required><?= htmlspecialchars($education['description']); ?></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Update Education</button>
+                    </form>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="duration">Duration</label>
-                    <input type="text" name="duration" class="form-control" id="duration" value="<?= htmlspecialchars($education['duration']); ?>" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="description">Description</label>
-                    <textarea name="description" class="form-control" id="description" rows="4" required><?= htmlspecialchars($education['description']); ?></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Update Education</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
 
 <?php include('footer.php'); ?>

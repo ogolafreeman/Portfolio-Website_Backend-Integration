@@ -37,28 +37,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="row">
         <?php include('sidebar.php'); ?>
         <div class="col-9 p-4">
-            <h2>Edit Work Experience</h2>
-            <form method="POST">
-                <div class="form-group mb-3">
-                    <label for="position">Position</label>
-                    <input type="text" name="position" class="form-control" id="position" value="<?= htmlspecialchars($work['position']); ?>" required>
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">Edit Work Experience</h3>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="company">Company</label>
-                    <input type="text" name="company" class="form-control" id="company" value="<?= htmlspecialchars($work['company']); ?>" required>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="position" class="form-label">Position</label>
+                            <input type="text" name="position" class="form-control" id="position" value="<?= htmlspecialchars($work['position']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="company" class="form-label">Company</label>
+                            <input type="text" name="company" class="form-control" id="company" value="<?= htmlspecialchars($work['company']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="duration" class="form-label">Duration</label>
+                            <input type="text" name="duration" class="form-control" id="duration" value="<?= htmlspecialchars($work['duration']); ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="responsibilities" class="form-label">Responsibilities</label>
+                            <textarea name="responsibilities" class="form-control" id="responsibilities" rows="4" required><?= htmlspecialchars($work['responsibilities']); ?></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-info w-100">Update Work Experience</button>
+                    </form>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="duration">Duration</label>
-                    <input type="text" name="duration" class="form-control" id="duration" value="<?= htmlspecialchars($work['duration']); ?>" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="responsibilities">Responsibilities</label>
-                    <textarea name="responsibilities" class="form-control" id="responsibilities" rows="4" required><?= htmlspecialchars($work['responsibilities']); ?></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Update Work Experience</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
 
 <?php include('footer.php'); ?>
