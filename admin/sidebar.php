@@ -105,6 +105,19 @@
             </div>
         </li>
 
+        <!-- Blogs Module -->
+        <li>
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="collapse" href="#blogsMenu" role="button" aria-expanded="false" aria-controls="blogsMenu">
+                <i class="fa fa-blog me-2"></i> Blogs
+            </a>
+            <div class="collapse <?= (in_array(basename($_SERVER['PHP_SELF']), ['add_blog.php', 'view_blogs.php']) ? 'show' : ''); ?>" id="blogsMenu">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="add_blog.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'add_blog.php' ? 'active' : ''; ?>">Add Blog</a></li>
+                    <li><a href="view_blogs.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'view_blogs.php' ? 'active' : ''; ?>">View Blogs</a></li>
+                </ul>
+            </div>
+        </li>
+
         <!-- Settings -->
         <li>
             <a href="settings.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) === 'settings.php' ? 'active' : ''; ?>">
