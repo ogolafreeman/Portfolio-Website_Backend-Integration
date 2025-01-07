@@ -31,17 +31,18 @@
                     <?php while ($blog = $blogResult->fetch_assoc()): ?>
                         <div class="col-sm-12 col-md-4">
                             <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                                <img src="<?php echo $blog['image']; ?>" alt="Blog Image" class="img-fluid">
+                                <!-- Ensure the correct relative path -->
+                                <img src="admin/<?php echo htmlspecialchars($blog['image']); ?>" alt="Blog Image" class="img-fluid">
                                 <div class="blog-inner">
-                                    <h2><a href="<?php echo $blog['read_more_link']; ?>"><?php echo $blog['title']; ?></a></h2>
+                                    <h2><a href="<?php echo htmlspecialchars($blog['read_more_link']); ?>"><?php echo htmlspecialchars($blog['title']); ?></a></h2>
                                     <div class="mh-blog-post-info">
                                         <ul>
-                                            <li><strong>Post On</strong><a href="#"><?php echo $blog['post_date']; ?></a></li>
-                                            <li><strong>By</strong><a href="#"><?php echo $blog['author']; ?></a></li>
+                                            <li><strong>Post On</strong><a href="#"><?php echo htmlspecialchars($blog['post_date']); ?></a></li>
+                                            <li><strong>By</strong><a href="#"><?php echo htmlspecialchars($blog['author']); ?></a></li>
                                         </ul>
                                     </div>
-                                    <p><?php echo $blog['content']; ?></p>
-                                    <a href="<?php echo $blog['read_more_link']; ?>">Read More</a>
+                                    <p><?php echo htmlspecialchars(substr($blog['content'], 0, 100)); ?>...</p>
+                                    <a href="<?php echo htmlspecialchars($blog['read_more_link']); ?>">Read More</a>
                                 </div>
                             </div>
                         </div>
