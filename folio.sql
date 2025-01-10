@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2025 at 01:45 PM
+-- Generation Time: Jan 10, 2025 at 11:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `about_me` (
 --
 
 INSERT INTO `about_me` (`id`, `name`, `location`, `description`, `skills`) VALUES
-(1, 'Patrick', 'Paris', 'Hello, I’m Patrick, a web-developer based in Paris. I have rich experience in website design & building and customization.', 'php, html, css, wordpress, React, Javascript');
+(1, 'Jacktone Okwemba', 'Kenya', 'Hello, I’m Jacktone Okwemba, a software Engineer. I have rich experience in website design, building and customization.', 'php, html, css, wordpress, React, Javascript, Python');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,8 @@ CREATE TABLE `blog_posts` (
 --
 
 INSERT INTO `blog_posts` (`id`, `title`, `content`, `post_date`, `author`, `image`, `read_more_link`, `created_at`) VALUES
-(4, 'Test', 'test', '0000-00-00', 'test', 'uploads/blogs/logo.png', '', '2025-01-07 12:40:02');
+(4, 'Test', 'test', '2025-01-06', 'test', 'uploads/blogs/logo.png', 'tyr', '2025-01-07 12:40:02'),
+(5, 'Test 3', '45', '2025-01-08', 'javk', 'uploads/blogs/IMG_20241101_215545.jpg', 'tyg', '2025-01-07 18:55:23');
 
 -- --------------------------------------------------------
 
@@ -98,15 +99,27 @@ CREATE TABLE `contact_messages` (
   `last_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `message` text NOT NULL,
-  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `read_status` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact_messages`
 --
 
-INSERT INTO `contact_messages` (`id`, `first_name`, `last_name`, `email`, `message`, `submitted_at`) VALUES
-(1, 'LAWRENCE', 'SIKANA MUDIMBA', 'jacktoneokwemba23@outlook.com', 'rtyrrt', '2025-01-04 12:21:32');
+INSERT INTO `contact_messages` (`id`, `first_name`, `last_name`, `email`, `message`, `submitted_at`, `read_status`) VALUES
+(1, 'LAWRENCE', 'SIKANA MUDIMBA', 'jacktoneokwemba23@outlook.com', 'rtyrrt', '2025-01-04 12:21:32', 1),
+(2, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 18:33:58', 1),
+(3, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:01:34', 0),
+(4, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:04:08', 0),
+(5, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:06:54', 0),
+(6, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:09:12', 0),
+(7, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:09:58', 0),
+(8, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:10:33', 0),
+(9, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:12:48', 0),
+(10, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:14:28', 1),
+(11, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:17:35', 1),
+(12, 'PAULINE', 'ATIENO', 'jacktoneokwemba@outlook.com', 'yes', '2025-01-07 22:20:02', 1);
 
 -- --------------------------------------------------------
 
@@ -146,15 +159,16 @@ CREATE TABLE `home_section` (
   `facebook_link` varchar(255) DEFAULT NULL,
   `twitter_link` varchar(255) DEFAULT NULL,
   `github_link` varchar(255) DEFAULT NULL,
-  `dribbble_link` varchar(255) DEFAULT NULL
+  `dribbble_link` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `home_section`
 --
 
-INSERT INTO `home_section` (`id`, `name`, `title`, `email`, `phone`, `address`, `facebook_link`, `twitter_link`, `github_link`, `dribbble_link`) VALUES
-(1, 'Jacktone Okwemba', 'Product Designer', 'getemail@email.com', '+12 986 987 7867', '37, Pollsatnd, New York, United State', 'https://facebook.com/alex', 'https://twitter.com/alex', 'https://github.com/alex', 'https://dribbble.com/alex');
+INSERT INTO `home_section` (`id`, `name`, `title`, `email`, `phone`, `address`, `facebook_link`, `twitter_link`, `github_link`, `dribbble_link`, `image`) VALUES
+(1, 'Jacktone Okwemba', 'Software Engineer', 'jacktoneokwemba23@outlook.com', '+254702718403', '754, Kenya - Kisumu', 'https://orcid.org/0009-0008-0566-825X', 'https://twitter.com/OkwembaJacktone', 'https://github.com/ogolafreeman', 'https://orcid.org/0009-0008-0566-825X', 'uploads/home/IMG_20241101_215545.jpg');
 
 -- --------------------------------------------------------
 
@@ -227,10 +241,9 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `category`, `title`, `type`, `description`, `image`, `testimonial`, `testimonial_author`, `testimonial_cite`) VALUES
-(1, 'Web Design', 'Wrap', 'Design & Development', 'Stamp is a clean and elegant Multipurpose Landing Page Template. It will fit perfectly for Startup, Web App or any type of Web Services.', 'assets/images/p-2.png', 'Excellent Template - suits my needs perfectly whilst allowing me to learn some new technology first hand.', 'Shane Kavanagh', 'Author.Inc'),
-(2, 'Web Design', 'Wrap', 'Design & Development', 'Stamp is a clean and elegant Multipurpose Landing Page Template. It will fit perfectly for Startup, Web App or any type of Web Services.', 'assets/images/p-2.png', 'Excellent Template - suits my needs perfectly whilst allowing me to learn some new technology first hand.', 'Shane Kavanagh', 'Author.Inc'),
-(3, 'Web Design', 'Wrap', 'Design & Development', 'Stamp is a clean and elegant Multipurpose Landing Page Template. It will fit perfectly for Startup, Web App or any type of Web Services.', 'assets/images/p-2.png', 'Excellent Template - suits my needs perfectly whilst allowing me to learn some new technology first hand.', 'Shane Kavanagh', 'Author.Inc'),
-(4, 'jkl', 'jvk', 'jk', 'jkcvgkj', 'uploads/projects/IMG_20241101_215545.jpg', 'chjk', 'hk', 'hk');
+(4, 'Back-end', 'alx-files_manager', 'files_manager', 'alx-files_manager', 'uploads/projects/IMG_20241101_215545.jpg', 'nice', 'jack', 'https://github.com/ogolafreeman/alx-files_manager'),
+(5, 'jkl', 'jvk', 'jk', 'jkcvgkj', 'uploads/projects/IMG_20241101_215545.jpg', 'chjk', 'hk', 'hk'),
+(6, 'jkl', 'jvk', 'jk', 'jkcvgkj', 'uploads/projects/IMG_20241101_215545.jpg', 'chjk', 'hk', 'hk');
 
 -- --------------------------------------------------------
 
@@ -476,7 +489,7 @@ ALTER TABLE `about_me`
 -- AUTO_INCREMENT for table `blog_posts`
 --
 ALTER TABLE `blog_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `contact_info`
@@ -488,7 +501,7 @@ ALTER TABLE `contact_info`
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `education`
@@ -518,7 +531,7 @@ ALTER TABLE `professional_skills`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `services`
