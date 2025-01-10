@@ -164,61 +164,7 @@ $conn->close();
             </div>
         </div>
 
-        <!-- Add Home Section Form -->
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <div class="form-container">
-                    <h3>Add Home Section Details</h3>
-                    <form method="POST">
-                        <div class="mb-3">
-                            <label for="home_name" class="form-label">Name</label>
-                            <input type="text" name="home_name" id="home_name" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="home_title" class="form-label">Title</label>
-                            <input type="text" name="home_title" id="home_title" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="home_email" class="form-label">Email</label>
-                            <input type="email" name="home_email" id="home_email" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="home_phone" class="form-label">Phone</label>
-                            <input type="text" name="home_phone" id="home_phone" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="home_address" class="form-label">Address</label>
-                            <textarea name="home_address" id="home_address" class="form-control" rows="3" required></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="facebook_link" class="form-label">Facebook Link</label>
-                            <input type="url" name="facebook_link" id="facebook_link" class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="twitter_link" class="form-label">Twitter Link</label>
-                            <input type="url" name="twitter_link" id="twitter_link" class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="github_link" class="form-label">GitHub Link</label>
-                            <input type="url" name="github_link" id="github_link" class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="dribbble_link" class="form-label">Dribbble Link</label>
-                            <input type="url" name="dribbble_link" id="dribbble_link" class="form-control">
-                        </div>
-
-                        <button type="submit" name="add_home_section" class="btn btn-primary">Add Home Section</button>
-                    </form>
-                </div>
-            </div>
+        
         </div>
     </div>
 
