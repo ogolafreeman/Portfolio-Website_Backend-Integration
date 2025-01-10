@@ -68,9 +68,10 @@ Clone the repository or download it as a ZIP file and extract it to your web ser
 3. Front-End: http://localhost/Portfolio-Website_Backend-Integration/
 ### 6. Login to the Admin Panel
 - Use the following default credentials:
+```credential
 Username: jack34
 Password: 123
-
+```
 ### Demo
 - Hosting platform - https://www.infinityfree.com/
 - Front-end - https://jacktoneokwembaweb.free.nf
