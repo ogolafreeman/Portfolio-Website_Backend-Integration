@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$servername = "localhost"; // Your MySQL server (usually localhost)
-$username = "root"; // Your database username
-$password = ""; // Your database password (default is empty for XAMPP)
-$dbname = "folio"; // The name of your database
+$servername = "localhost"; //  MySQL server (usually localhost)
+$username = "root"; //  database username
+$password = ""; //  database password (default is empty for XAMPP)
+$dbname = "folio"; // The name of database
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

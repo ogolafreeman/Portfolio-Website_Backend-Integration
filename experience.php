@@ -1,5 +1,5 @@
 <?php
-    include 'header.php'; // Includes meta tags and stylesheets
+    include 'header.php'; 
     include('config.php'); 
 
     // Fetch education details

@@ -1,6 +1,6 @@
 <?php
     // Main index file
-    include 'header.php'; // Includes meta tags and stylesheets
+    include 'header.php'; 
     include('config.php'); 
     // Fetch "About Me" data
     $sql = "SELECT * FROM about_me WHERE id = 1"; // Adjust ID as needed
