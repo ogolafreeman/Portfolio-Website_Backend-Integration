@@ -1,8 +1,8 @@
 <?php
 // Database configuration
-$servername = "localhost"; // Your MySQL server (usually localhost)
-$username = "root"; // Your database username
-$password = ""; // Your database password (default is empty for XAMPP)
+$servername = "localhost"; // MySQL server (usually localhost)
+$username = "root"; // database username
+$password = ""; // atabase password (default is empty for XAMPP)
 $dbname = "folio"; // The name of your database
 
 // Create connection

@@ -1,6 +1,6 @@
 <?php
-include 'header.php'; // Includes admin panel header
-include 'config.php'; // Includes database connection
+include 'header.php'; 
+include 'config.php'; 
 ?>
 
 <div class="container-fluid">
